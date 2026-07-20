@@ -1,1 +1,61 @@
-#!/usr/bin/env python3\n\"\"\"\nReset Admin Password Script\n\"\"\"\n\nimport sys\nimport json\nfrom pathlib import Path\nfrom getpass import getpass\nimport hashlib\n\ndef reset_admin():\n    \"\"\"Reset admin credentials\"\"\"\n    config_path = Path('/opt/mediaauto/config/settings.json')\n    \n    if not config_path.exists():\n        print(\"[✗] Configuration file not found\")\n        sys.exit(1)\n    \n    # Load configuration\n    with open(config_path, 'r') as f:\n        config = json.load(f)\n    \n    print(\"[INFO] Admin Password Reset\")\n    print(\"=\"*50)\n    \n    # Get new username\n    username = input(\"Enter new admin username (default: admin): \").strip()\n    if not username:\n        username = 'admin'\n    \n    # Get new password\n    while True:\n        password = getpass(\"Enter new admin password: \")\n        password_confirm = getpass(\"Confirm password: \")\n        \n        if password == password_confirm:\n            break\n        print(\"[✗] Passwords do not match. Try again.\")\n    \n    # Hash password (simple example - use bcrypt in production)\n    password_hash = hashlib.sha256(password.encode()).hexdigest()\n    \n    # Update configuration\n    config['panel']['username'] = username\n    config['panel']['password'] = password_hash  # Should be hashed properly\n    \n    # Save configuration\n    with open(config_path, 'w') as f:\n        json.dump(config, f, indent=4, ensure_ascii=False)\n    \n    print(\"[✓] Admin credentials updated successfully\")\n    print(f\"[✓] Username: {username}\")\n    print(\"[!] Please restart the bot: sudo systemctl restart mediaauto\")\n\nif __name__ == '__main__':\n    try:\n        reset_admin()\n    except KeyboardInterrupt:\n        print(\"\\n[!] Cancelled\")\n        sys.exit(1)\n"
+#!/usr/bin/env python3
+"""
+Reset Admin Password Script
+"""
+
+import sys
+import json
+from pathlib import Path
+from getpass import getpass
+import hashlib
+
+def reset_admin():
+    """Reset admin credentials"""
+    config_path = Path('/opt/mediaauto/config/settings.json')
+    
+    if not config_path.exists():
+        print("[✗] Configuration file not found")
+        sys.exit(1)
+    
+    # Load configuration
+    with open(config_path, 'r') as f:
+        config = json.load(f)
+    
+    print("[INFO] Admin Password Reset")
+    print("="*50)
+    
+    # Get new username
+    username = input("Enter new admin username (default: admin): ").strip()
+    if not username:
+        username = 'admin'
+    
+    # Get new password
+    while True:
+        password = getpass("Enter new admin password: ")
+        password_confirm = getpass("Confirm password: ")
+        
+        if password == password_confirm:
+            break
+        print("[✗] Passwords do not match. Try again.")
+    
+    # Hash password (simple example - use bcrypt in production)
+    password_hash = hashlib.sha256(password.encode()).hexdigest()
+    
+    # Update configuration
+    config['panel']['username'] = username
+    config['panel']['password'] = password_hash  # Should be hashed properly
+    
+    # Save configuration
+    with open(config_path, 'w') as f:
+        json.dump(config, f, indent=4, ensure_ascii=False)
+    
+    print("[✓] Admin credentials updated successfully")
+    print(f"[✓] Username: {username}")
+    print("[!] Please restart the bot: sudo systemctl restart mediaauto")
+
+if __name__ == '__main__':
+    try:
+        reset_admin()
+    except KeyboardInterrupt:
+        print("\n[!] Cancelled")
+        sys.exit(1)

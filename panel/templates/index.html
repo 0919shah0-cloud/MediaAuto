@@ -1,1 +1,132 @@
-<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>MediaAuto - Dashboard</title>\n    <link rel=\"stylesheet\" href=\"{{ url_for('static', filename='css/style.css') }}\">\n</head>\n<body>\n    <div class=\"container\">\n        <nav class=\"navbar\">\n            <div class=\"logo\">🤖 MediaAuto</div>\n            <ul class=\"nav-links\">\n                <li><a href=\"#dashboard\">Dashboard</a></li>\n                <li><a href=\"#statistics\">Statistics</a></li>\n                <li><a href=\"#sources\">Sources</a></li>\n                <li><a href=\"#scheduler\">Scheduler</a></li>\n                <li><a href=\"#settings\">Settings</a></li>\n                <li><a href=\"#logs\">Logs</a></li>\n                <li><a href=\"#\" onclick=\"logout()\">Logout</a></li>\n            </ul>\n        </nav>\n\n        <main class=\"main-content\">\n            <!-- Dashboard Section -->\n            <section id=\"dashboard\" class=\"section\">\n                <h1>Dashboard</h1>\n                <div class=\"stats-grid\">\n                    <div class=\"stat-card\">\n                        <h3>📱 Bot Status</h3>\n                        <p id=\"bot-status\">Running</p>\n                    </div>\n                    <div class=\"stat-card\">\n                        <h3>📊 Posts Today</h3>\n                        <p id=\"posts-today\">0</p>\n                    </div>\n                    <div class=\"stat-card\">\n                        <h3>🔗 Active Sources</h3>\n                        <p id=\"active-sources\">0</p>\n                    </div>\n                    <div class=\"stat-card\">\n                        <h3>📥 Downloads</h3>\n                        <p id=\"total-downloads\">0</p>\n                    </div>\n                </div>\n            </section>\n\n            <!-- Statistics Section -->\n            <section id=\"statistics\" class=\"section\" style=\"display:none;\">\n                <h1>Statistics</h1>\n                <div id=\"stats-container\">\n                    <p>Loading statistics...</p>\n                </div>\n            </section>\n\n            <!-- Sources Section -->\n            <section id=\"sources\" class=\"section\" style=\"display:none;\">\n                <h1>Source Manager</h1>\n                <button onclick=\"showAddChannelModal()\" class=\"btn btn-primary\">+ Add Channel</button>\n                <table id=\"channels-table\" class=\"table\">\n                    <thead>\n                        <tr>\n                            <th>Channel</th>\n                            <th>Status</th>\n                            <th>Posts</th>\n                            <th>Actions</th>\n                        </tr>\n                    </thead>\n                    <tbody id=\"channels-tbody\">\n                        <tr><td colspan=\"4\">No channels configured</td></tr>\n                    </tbody>\n                </table>\n            </section>\n\n            <!-- Scheduler Section -->\n            <section id=\"scheduler\" class=\"section\" style=\"display:none;\">\n                <h1>Scheduler Settings</h1>\n                <form id=\"scheduler-form\">\n                    <div class=\"form-group\">\n                        <label>Posting Interval:</label>\n                        <select id=\"interval-select\">\n                            <option value=\"5\">Every 5 minutes</option>\n                            <option value=\"10\">Every 10 minutes</option>\n                            <option value=\"30\" selected>Every 30 minutes</option>\n                            <option value=\"60\">Every 1 hour</option>\n                        </select>\n                    </div>\n                    <button type=\"submit\" class=\"btn btn-primary\">Save Settings</button>\n                </form>\n            </section>\n\n            <!-- Settings Section -->\n            <section id=\"settings\" class=\"section\" style=\"display:none;\">\n                <h1>Settings</h1>\n                <form id=\"settings-form\">\n                    <div class=\"form-group\">\n                        <label>Watermark Text:</label>\n                        <input type=\"text\" id=\"watermark-input\" placeholder=\"e.g., @MyChannel\">\n                    </div>\n                    <div class=\"form-group\">\n                        <label>Enable Notifications:</label>\n                        <input type=\"checkbox\" id=\"notifications-input\">\n                    </div>\n                    <button type=\"submit\" class=\"btn btn-primary\">Save Settings</button>\n                </form>\n            </section>\n\n            <!-- Logs Section -->\n            <section id=\"logs\" class=\"section\" style=\"display:none;\">\n                <h1>Logs</h1>\n                <div id=\"logs-container\" class=\"logs-viewer\">\n                    <p>Loading logs...</p>\n                </div>\n            </section>\n        </main>\n    </div>\n\n    <!-- Add Channel Modal -->\n    <div id=\"add-channel-modal\" class=\"modal\" style=\"display:none;\">\n        <div class=\"modal-content\">\n            <span class=\"close\" onclick=\"closeModal()\">&times;</span>\n            <h2>Add Channel</h2>\n            <form id=\"add-channel-form\">\n                <input type=\"text\" id=\"channel-name\" placeholder=\"Channel username or ID\" required>\n                <button type=\"submit\" class=\"btn btn-primary\">Add</button>\n            </form>\n        </div>\n    </div>\n\n    <script src=\"{{ url_for('static', filename='js/main.js') }}\"></script>\n</body>\n</html>\n
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediaAuto - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">🤖 MediaAuto</div>
+            <ul class="nav-links">
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#statistics">Statistics</a></li>
+                <li><a href="#sources">Sources</a></li>
+                <li><a href="#scheduler">Scheduler</a></li>
+                <li><a href="#settings">Settings</a></li>
+                <li><a href="#logs">Logs</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section">
+                <h1>Dashboard</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>📱 Bot Status</h3>
+                        <p id="bot-status">Running</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>📊 Posts Today</h3>
+                        <p id="posts-today">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>🔗 Active Sources</h3>
+                        <p id="active-sources">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>📥 Downloads</h3>
+                        <p id="total-downloads">0</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section id="statistics" class="section" style="display:none;">
+                <h1>Statistics</h1>
+                <div id="stats-container">
+                    <p>Loading statistics...</p>
+                </div>
+            </section>
+
+            <!-- Sources Section -->
+            <section id="sources" class="section" style="display:none;">
+                <h1>Source Manager</h1>
+                <button onclick="showAddChannelModal()" class="btn btn-primary">+ Add Channel</button>
+                <table id="channels-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Channel</th>
+                            <th>Status</th>
+                            <th>Posts</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="channels-tbody">
+                        <tr><td colspan="4">No channels configured</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Scheduler Section -->
+            <section id="scheduler" class="section" style="display:none;">
+                <h1>Scheduler Settings</h1>
+                <form id="scheduler-form">
+                    <div class="form-group">
+                        <label>Posting Interval:</label>
+                        <select id="interval-select">
+                            <option value="5">Every 5 minutes</option>
+                            <option value="10">Every 10 minutes</option>
+                            <option value="30" selected>Every 30 minutes</option>
+                            <option value="60">Every 1 hour</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Settings</button>
+                </form>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section" style="display:none;">
+                <h1>Settings</h1>
+                <form id="settings-form">
+                    <div class="form-group">
+                        <label>Watermark Text:</label>
+                        <input type="text" id="watermark-input" placeholder="e.g., @MyChannel">
+                    </div>
+                    <div class="form-group">
+                        <label>Enable Notifications:</label>
+                        <input type="checkbox" id="notifications-input">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Settings</button>
+                </form>
+            </section>
+
+            <!-- Logs Section -->
+            <section id="logs" class="section" style="display:none;">
+                <h1>Logs</h1>
+                <div id="logs-container" class="logs-viewer">
+                    <p>Loading logs...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Channel Modal -->
+    <div id="add-channel-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add Channel</h2>
+            <form id="add-channel-form">
+                <input type="text" id="channel-name" placeholder="Channel username or ID" required>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

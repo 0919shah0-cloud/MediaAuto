@@ -1,1 +1,343 @@
-* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}\n\nbody {\n    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n    color: #333;\n    min-height: 100vh;\n}\n\n.container {\n    display: flex;\n    height: 100vh;\n}\n\n/* Navbar */\n.navbar {\n    width: 250px;\n    background: #2c3e50;\n    color: white;\n    padding: 20px;\n    overflow-y: auto;\n}\n\n.logo {\n    font-size: 24px;\n    font-weight: bold;\n    margin-bottom: 30px;\n    padding-bottom: 20px;\n    border-bottom: 2px solid #3498db;\n}\n\n.nav-links {\n    list-style: none;\n}\n\n.nav-links li {\n    margin: 15px 0;\n}\n\n.nav-links a {\n    color: #ecf0f1;\n    text-decoration: none;\n    display: block;\n    padding: 10px 15px;\n    border-radius: 5px;\n    transition: all 0.3s ease;\n}\n\n.nav-links a:hover {\n    background: #3498db;\n    padding-left: 25px;\n}\n\n/* Main Content */\n.main-content {\n    flex: 1;\n    overflow-y: auto;\n    padding: 30px;\n}\n\n.section {\n    background: white;\n    border-radius: 10px;\n    padding: 30px;\n    margin-bottom: 30px;\n    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n}\n\n.section h1 {\n    margin-bottom: 20px;\n    color: #2c3e50;\n}\n\n/* Stats Grid */\n.stats-grid {\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n    gap: 20px;\n    margin-top: 20px;\n}\n\n.stat-card {\n    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n    color: white;\n    padding: 25px;\n    border-radius: 10px;\n    text-align: center;\n    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);\n    transition: transform 0.3s ease;\n}\n\n.stat-card:hover {\n    transform: translateY(-5px);\n}\n\n.stat-card h3 {\n    margin-bottom: 15px;\n    font-size: 14px;\n    opacity: 0.9;\n}\n\n.stat-card p {\n    font-size: 32px;\n    font-weight: bold;\n}\n\n/* Table */\n.table {\n    width: 100%;\n    border-collapse: collapse;\n    margin-top: 20px;\n}\n\n.table thead {\n    background: #f8f9fa;\n}\n\n.table th {\n    padding: 12px;\n    text-align: left;\n    font-weight: 600;\n    color: #2c3e50;\n    border-bottom: 2px solid #dee2e6;\n}\n\n.table td {\n    padding: 12px;\n    border-bottom: 1px solid #dee2e6;\n}\n\n.table tbody tr:hover {\n    background: #f8f9fa;\n}\n\n/* Forms */\n.form-group {\n    margin-bottom: 20px;\n}\n\n.form-group label {\n    display: block;\n    margin-bottom: 8px;\n    font-weight: 600;\n    color: #2c3e50;\n}\n\n.form-group input,\n.form-group select,\n.form-group textarea {\n    width: 100%;\n    padding: 10px;\n    border: 1px solid #ddd;\n    border-radius: 5px;\n    font-size: 14px;\n    font-family: inherit;\n}\n\n.form-group input:focus,\n.form-group select:focus,\n.form-group textarea:focus {\n    outline: none;\n    border-color: #667eea;\n    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);\n}\n\n/* Buttons */\n.btn {\n    padding: 10px 20px;\n    border: none;\n    border-radius: 5px;\n    font-size: 14px;\n    font-weight: 600;\n    cursor: pointer;\n    transition: all 0.3s ease;\n}\n\n.btn-primary {\n    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n    color: white;\n}\n\n.btn-primary:hover {\n    transform: translateY(-2px);\n    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);\n}\n\n.btn-danger {\n    background: #e74c3c;\n    color: white;\n}\n\n.btn-danger:hover {\n    background: #c0392b;\n}\n\n.btn-success {\n    background: #27ae60;\n    color: white;\n}\n\n.btn-success:hover {\n    background: #229954;\n}\n\n/* Modal */\n.modal {\n    position: fixed;\n    z-index: 1000;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.5);\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.modal-content {\n    background-color: #fefefe;\n    padding: 30px;\n    border-radius: 10px;\n    width: 90%;\n    max-width: 500px;\n    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);\n}\n\n.close {\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n    cursor: pointer;\n    color: #aaa;\n}\n\n.close:hover {\n    color: #000;\n}\n\n.modal-content h2 {\n    margin-bottom: 20px;\n    color: #2c3e50;\n}\n\n/* Logs Viewer */\n.logs-viewer {\n    background: #1e1e1e;\n    color: #0dff00;\n    padding: 20px;\n    border-radius: 5px;\n    font-family: 'Courier New', monospace;\n    font-size: 12px;\n    height: 400px;\n    overflow-y: auto;\n    margin-top: 20px;\n}\n\n.logs-viewer p {\n    margin: 5px 0;\n    line-height: 1.6;\n}\n\n/* Responsive */\n@media (max-width: 768px) {\n    .container {\n        flex-direction: column;\n    }\n\n    .navbar {\n        width: 100%;\n        height: auto;\n    }\n\n    .nav-links {\n        display: flex;\n        flex-wrap: wrap;\n    }\n\n    .nav-links li {\n        margin: 0 10px;\n    }\n\n    .stats-grid {\n        grid-template-columns: 1fr;\n    }\n\n    .main-content {\n        padding: 15px;\n    }\n\n    .section {\n        padding: 15px;\n    }\n}\n\n/* Animations */\n@keyframes slideIn {\n    from {\n        opacity: 0;\n        transform: translateY(20px);\n    }\n    to {\n        opacity: 1;\n        transform: translateY(0);\n    }\n}\n\n.section {\n    animation: slideIn 0.3s ease;\n}\n\n/* Utility Classes */\n.text-center {\n    text-align: center;\n}\n\n.mt-20 {\n    margin-top: 20px;\n}\n\n.mb-20 {\n    margin-bottom: 20px;\n}\n\n.hidden {\n    display: none;\n}\n\n.text-success {\n    color: #27ae60;\n}\n\n.text-danger {\n    color: #e74c3c;\n}\n\n.text-warning {\n    color: #f39c12;\n}\n"
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 15px 0;
+}
+
+.nav-links a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: #3498db;
+    padding-left: 25px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 30px;
+}
+
+.section {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section h1 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    margin-bottom: 15px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.stat-card p {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table thead {
+    background: #f8f9fa;
+}
+
+.table th {
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+.btn-success {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #229954;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Logs Viewer */
+.logs-viewer {
+    background: #1e1e1e;
+    color: #0dff00;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    height: 400px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+.logs-viewer p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .navbar {
+        width: 100%;
+        height: auto;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .nav-links li {
+        margin: 0 10px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .section {
+        padding: 15px;
+    }
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section {
+    animation: slideIn 0.3s ease;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.text-success {
+    color: #27ae60;
+}
+
+.text-danger {
+    color: #e74c3c;
+}
+
+.text-warning {
+    color: #f39c12;
+}
