@@ -1,0 +1,66 @@
+{
+  "bot": {
+    "token": "YOUR_BOT_TOKEN",
+    "api_id": "YOUR_API_ID",
+    "api_hash": "YOUR_API_HASH",
+    "phone_number": "YOUR_PHONE",
+    "session_name": "mediaauto_session"
+  },
+  "database": {
+    "type": "sqlite",
+    "path": "data/mediaauto.db"
+  },
+  "panel": {
+    "host": "0.0.0.0",
+    "port": 8080,
+    "debug": false,
+    "username": "admin",
+    "password_hash": ""
+  },
+  "api": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "debug": false,
+    "secret_key": ""
+  },
+  "channels": {
+    "sources": [],
+    "destination": 0
+  },
+  "scheduler": {
+    "interval": 300,
+    "retry_count": 3,
+    "timeout": 30
+  },
+  "ai": {
+    "enabled": true,
+    "model": "distilbert-base-uncased",
+    "language": "en",
+    "max_caption_length": 4096,
+    "summarize_enabled": false
+  },
+  "download": {
+    "enabled": true,
+    "quality": "best",
+    "audio_only": false,
+    "max_size_mb": 500
+  },
+  "processing": {
+    "remove_hashtags": true,
+    "remove_mentions": false,
+    "remove_links": false,
+    "add_watermark": false,
+    "watermark_text": "@YourChannel"
+  },
+  "duplicate_check": {
+    "enabled": true,
+    "method": "hash",
+    "retention_days": 30
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "logs/mediaauto.log",
+    "max_bytes": 10485760,
+    "backup_count": 5
+  }
+}
