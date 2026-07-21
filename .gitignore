@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Config
+config.json
+.env
+.env.local
+
+# Data
+downloads/
+logs/
+temp/
+sessions/
+*.db
+*.sqlite3
+
+# Media
+*.mp4
+*.mkv
+*.avi
+*.mov
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.mp3
+*.wav
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Lock files
+poetry.lock
